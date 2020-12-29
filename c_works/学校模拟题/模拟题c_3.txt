@@ -1,0 +1,346 @@
+验证哥德巴赫猜想，即每个不小于6的偶数都能分解为两个素数之和。
+
+#include<stdio.h>
+
+#include<math.h>
+
+void Goldbach(int a, int b );   //寻找大偶数是两个素数之和函数声明语句
+
+int main()
+
+{
+
+         int  n,m;
+
+         printf("请输入两个两个正整数（n<m）：");
+
+         scanf("%d%d",        1         ,&m);            //输入两个正整数
+
+         if(n        2        m)  Goldbach(n,m);
+
+         else     Goldbach(m,n);
+
+         return 0;
+
+}
+
+int prime(       3        )  //判断是否是素数函数
+
+{
+
+         int i,m=sqrt(n);
+
+         for(i=2;i<=m;i++)
+
+                   if(n%i==0)       4        ;
+
+         return 1;
+
+}
+
+ 
+
+void Goldbach(int a,int b) //寻找大偶数是两个素数之和函数
+
+{ 
+
+         int i,k;
+
+         for(i=a;i<=b;i++)
+
+         {
+
+                   k=3;
+
+                   while(k<=i/2)
+
+                   { 
+
+                            if(       5       *prime(i-k)) break;
+
+                       k=k+2;
+
+                   }
+
+                   if(k<=i/2)printf("%4d=%4d+%4d\n",i,k,i-k);
+
+         }
+
+}
+#define _CRT_SECURE_NO_WARNINGS 1
+
+//验证哥德巴赫猜想，即每个不小于6的偶数都能分解为两个素数之和。
+
+#include<stdio.h>
+#include<math.h>
+
+void Goldbach(int a, int b);   //寻找大偶数是两个素数之和函数声明语句
+
+int main()
+{
+    int  n, m;
+    printf("请输入两个两个正整数（n<m）：");
+    scanf("%d%d", &n, &m);            //输入两个正整数
+    if (n < m)  
+        Goldbach(n, m);
+    else    
+        Goldbach(m, n);
+    return 0;
+}
+
+int prime(n)  
+
+{
+    int i, m = (int)sqrt(n);
+    for (i = 2; i <= m; i++)
+        if (n % i == 0) 
+            return 0;
+    return 1;
+}
+
+
+
+void Goldbach(int a, int b) //寻找大偶数是两个素数之和函数
+{
+    int i, k;
+    for (i = a; i <= b; i++)
+    {
+        k = 3;
+        while (k <= i / 2)
+        {
+            if (prime(k) * prime(i - k)) 
+                break;
+            k = k + 2;
+        }
+        if (k <= i / 2)
+            printf("%4d=%4d+%4d\n", i, k, i - k);
+    }
+}
+
+程序实现在原有的小吃榜单上添加新的小吃，添加完成后输出更新后的小吃榜单。
+#include <stdio.h>
+#include <time.h>
+struct xiaochi
+{
+    int num;//小吃的编号 
+    char name[20];//小吃的名称 
+    char pname[20];//小吃的类型（面食、米食、果类) 
+    char jianjie[100];//小吃的特色、味道、 评价 
+};
+int tianjia(struct xiaochi *ps)//小吃新品添加 
+{
+
+    char ch;
+    static pnum=1;
+    pnum++;   1    =pnum;
+    gets(ps->name);gets(   2    );gets(ps->jianjie);//从键盘读取小吃的名称、类型、简介 
+    fflush(stdin);
+    printf("是否继续输入小吃？格式：名称  产地  简介\n"); 
+    ch=   3    ;fflush(stdin);
+    if(ch=='y'||ch=='Y') return 1;//继续追加则回复y 
+    else return 0;
+
+}
+int main()
+{
+    int p=1,cp=1,i;
+    struct xiaochi str[100]={1,"油条","上海","是一种古老的中式面食，长条形中空的油炸食品，口感松脆有韧劲，中国传统的早点之一。"};
+    struct xiaochi *pstr1;
+    pstr1=str;
+    printf("\t========================小吃英雄榜==========================\n");
+    printf("%4d,%s,%s,%s\n",pstr1->num,pstr1->name,pstr1->pname,pstr1->jianjie);
+    printf("\n\n可以添加你熟悉的小吃 格式：名称  产地  简介\n");
+    do{
+        pstr1++;p=tianjia(   4    );cp++;
+
+    }while(   5    );
+     system("cls");
+     printf("\t========================小吃英雄榜==========================\n");
+     for(pstr1=str,i=1;i<=cp;i++,pstr1++)//输出添加新品后的小吃榜单 
+     printf("%4d,%s,%s,%s\n",pstr1->num,pstr1->name,pstr1->pname,pstr1->jianjie);
+}
+
+
+#define _CRT_SECURE_NO_WARNINGS 1
+//程序实现在原有的小吃榜单上添加新的小吃，添加完成后输出更新后的小吃榜单。
+
+#include <stdio.h>
+#include <time.h>
+struct xiaochi
+{
+    int num;//小吃的编号
+    char name[20];//小吃的名称
+    char pname[20];//小吃的类型（面食、米食、果类)
+    char jianjie[100];//小吃的特色、味道、 评价
+};
+int tianjia(struct xiaochi* ps)//小吃新品添加
+{
+
+    char ch;
+    static pnum = 1;
+    pnum++;ps->num = pnum;
+    gets(ps->name); gets(ps->pname); gets(ps->jianjie);//从键盘读取小吃的名称、类型、简介
+    fflush(stdin);
+    printf("是否继续输入小吃？格式：名称  产地  简介\n");
+    ch = getchar(); fflush(stdin);
+    if (ch == 'y' || ch == 'Y') return 1;//继续追加则回复y
+    else return 0;
+
+}
+int main()
+{
+    int p = 1, cp = 1, i;
+    struct xiaochi str[100] = { 1,"油条","上海","是一种古老的中式面食，长条形中空的油炸食品，口感松脆有韧劲，中国传统的早点之一。" };
+    struct xiaochi* pstr1;
+    pstr1 = str;
+    printf("\t========================小吃英雄榜==========================\n");
+    printf("%4d,%s,%s,%s\n", pstr1->num, pstr1->name, pstr1->pname, pstr1->jianjie);
+    printf("\n\n可以添加你熟悉的小吃 格式：名称  产地  简介\n");
+    do {
+        pstr1++; p = tianjia(pstr1); cp++;
+
+    } while (p);
+    system("cls");
+    printf("\t========================小吃英雄榜==========================\n");
+    for (pstr1 = str, i = 1; i <= cp; i++, pstr1++)//输出添加新品后的小吃榜单
+        printf("%4d,%s,%s,%s\n", pstr1->num, pstr1->name, pstr1->pname, pstr1->jianjie);
+}
+
+专题65：优化电费计算服务
+背景：
+由于用电持续增长，该地区增加了第四档，居民家庭用户年用电量电价分为三个“阶梯”：第一档0~3000度，基础电价0.6元/度；第二档3000~5000度，电价在基础电价上增加0.1元/度；第三档超过5000度，年用量超过7000度时，电价在第三档基础上再增加0.30元/度。
+需求描述：
+为了应对未来对于电价的各种可能调整，程序应该具有最大的灵活性。电量范围及价格设定以“数据”方式表达，如下所示：
+        float estd[] = {4, 0,0.6, 3000,0.1, 5000,0.2, 7000,0.3 };
+数组数据理解为：数组第一个元素4表示共有4档计费，电量超过0度，每度0.6元，电量超过3000度部分，每度再增加0.1元，电量超过5000度部分，每度再增加0.2元，电量超过7000度部分，每度再增加0.3元。设计自定义函数ecost，用于计算年用电量对应的电费，社区服务中心为本社区的各位业主计算电费，由键盘输入各业主编号和年用电量，计算电费，输出业主的编号、年用电量、应支付电费的金额，并统计社区用电最多的3位业主和最少的3位业主，输出统计结果。
+请根据需求设计程序，满足实际需求。
+#define _CRT_SECURE_NO_WARNINGS 1
+//为了应对未来对于电价的各种可能调整，
+//程序应该具有最大的灵活性。电量范围及价格设定以“数据”方式表达，如下所示：
+//float estd[] = { 4, 0,0.6, 3000,0.1, 5000,0.2, 7000,0.3 };
+//数组数据理解为：数组第一个元素4表示共有4档计费，电量超过0度，每度0.6元，
+//电量超过3000度部分，每度再增加0.1元，电量超过5000度部分，每度再增加0.2元，
+//电量超过7000度部分，每度再增加0.3元。
+//设计自定义函数ecost，用于计算年用电量对应的电费，
+//社区服务中心为本社区的各位业主计算电费，由键盘输入各业主编号和年用电量，
+//计算电费，输出业主的编号、年用电量、应支付电费的金额，并统计社区用电最多的3位业主和最少的3位业主，
+//输出统计结果。
+#include<stdio.h>
+double cost(double qwer)
+{
+	int i;
+	float estd[] = { 4, 0,0.6, 3000,0.1, 5000,0.2, 7000,0.3 };
+	if (qwer > estd[7])
+		i = 4;
+	else if (qwer > estd[5])
+		i = 3;
+	else if (qwer > estd[3])
+		i = 2;
+	else if (qwer > estd[1])
+		i = 1;
+
+	switch (i)
+	{
+	case 1:
+		return estd[2] * qwer;
+		break;
+	case 2:
+		return estd[4] * (qwer-estd[3])+estd[3]*estd[2];
+		break;
+	case 3:
+		return estd[6] * (qwer - estd[5]) + (estd[5]-estd[3])*estd[4]+ estd[3] * estd[2];
+		break;
+	case 4:
+		return estd[8]*(qwer-estd[7])+estd[6] * (estd[7] - estd[5]) + (estd[5] - estd[3]) * estd[4] + estd[3] * estd[2];
+		break;
+	default:
+		exit(0);
+		break;
+	}
+
+}
+
+double ecost(struct p num[50], int i)
+{
+	for (int n = 0; n <= i; n++)
+	{
+		num[n].c = cost(num[n].c);
+	}
+}
+
+struct p
+{
+	int a;
+	double b;
+	double c;
+};
+int main()
+{
+	int i = 0;
+	struct p num[50];
+	printf("请输入用户编号和用电量(输入0 0退出)");
+	while(1)
+	{
+		i = 0;
+		scanf("%d%lf", &num[i].a, &num[i].b);
+		if (num[i].a == 0 && num[i].b == 0)
+			break;
+		i++;
+	}
+	ecost(num,i);
+	return 0;
+}
+
+
+背景：
+  在科学研究中，经常需要定义超大二维数组来存储数据（例如在激光雷达中，激光雷达转一圈获得一帧数据，连续转动时，将获得大量的帧数据）。c程序中数组的各个单元在内存中是连续的，显然超大二维数组要求内存存在大量的连续未使用的存储空间，这是不现实的。有效的解决方案是定义超大二维动态数组。
+需求描述：
+  请利用c程序编写一个定义任意二维数组的函数和输出二维数组函数。二维数组的行、列由随机函数产生（50以内）。二维数组元素也通过随机函数产生200以内的随机数。
+#define _CRT_SECURE_NO_WARNINGS 1
+//背景：
+//在科学研究中，经常需要定义超大二维数组来存储数据
+//（例如在激光雷达中，激光雷达转一圈获得一帧数据，连续转动时，将获得大量的帧数据）。
+//c程序中数组的各个单元在内存中是连续的，显然超大二维数组要求内存存在大量的连续未使用的存储空间，这是不现实的。
+//有效的解决方案是定义超大二维动态数组。
+//需求描述：
+//请利用c程序编写一个定义任意二维数组的函数和输出二维数组函数。
+//二维数组的行、列由随机函数产生（50以内）。二维数组元素也通过随机函数产生200以内的随机数。
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+void dy(int a[][50], int x, int y)
+{
+	int z, i, j;
+	for (i = 0; i < x; i++)
+	{
+		for (j = 0; j < y; j++)
+		{
+			z = rand() % 201;
+			a[i][j] = z;
+		}
+	}
+}
+void sc(int a[][50],int x,int y)
+{
+	int i, j;
+	for (i = 0; i < x; i++)
+	{
+		for (j = 0; j < y; j++)
+		{
+			printf("%4d", a[i][j]);
+		}
+		printf("\n");
+	}
+
+}
+int main()
+{
+	int x, y;
+	int a[50][50] = { 0 };
+	srand((unsigned)time(NULL));
+	x = rand() % 50;
+	y = rand() % 50;
+	dy(a,x,y);
+	sc(a,x,y);
+	return 0;
+}
