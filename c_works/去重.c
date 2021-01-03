@@ -18,12 +18,10 @@ int main()
 				{
 					for (k = j; k < n; k++)
 					{
-						arr[k] = arr[k + 1];
-						arr[n] = '\0';
-						
+						arr[k] = arr[k + 1];				
 					}
 					j--;
-					n--;
+					arr[--n] = '\0';
 				}
 			}
 		}
