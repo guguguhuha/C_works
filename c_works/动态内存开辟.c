@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #define _CRT_SECURE_NO_WARNINGS
 
 //void* malloc(size_t size);
@@ -418,4 +419,4 @@
 //free(p->p_a);
 //p->p_a = NULL;
 //free(p);
-//p = NULL;
+

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #define _CRT_SECURE_NO_WARNINGS 1
 
 //替换空格 ---将空格替换为 %20 
