@@ -400,3 +400,77 @@
 //
 
 
+//#include <stdio.h> 
+//int main()
+//{
+//	int array[NUM];
+//	int i = 0;
+//	for (i = 0; i < NUM; i++)
+//	{
+//		array[i] = i;
+//	}
+//	for (i = 0; i < NUM; i++)
+//	{
+//		printf("%d ", array[i]);
+//	}
+//	printf("\n");
+//	return 0;
+//}
+
+//gcc -D NUM=10 test.c
+
+//#define test
+//
+//int main()
+//{
+//	int i = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		printf("%d\n", i);
+//		if (i == 5)
+//		{
+//#ifdef test
+//#error this is a test!
+//#endif
+//		}
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//
+//int main()
+//{
+//	printf("filename :%s\n", __FILE__);
+//	printf("line :%d\n", __LINE__);
+//
+//#line 100 "test.c"
+//	printf("filename :%s\n", __FILE__);
+//	printf("line :%d\n", __LINE__);
+//
+//
+//	return 0;
+//}
+
+
+//#pragma message("This is a test!")
+//int main()
+//{
+//#pragma message("This is also a test!")
+//	return 0;
+//}
+
+
+//#include "test.h"
+//
+//int main()
+//{
+//	printf("%d \n", ONE);
+//	printf("%d \n", TWO);
+//	
+//	printf("%d \n", THREE);
+//	printf("%d \n", FOUR);
+//
+//	return 0;
+//}
+
