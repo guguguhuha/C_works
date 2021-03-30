@@ -1,5 +1,7 @@
 #include <stdio.h>
+//面试题 17.04. 消失的数字
 //数组nums包含从0到n的所有整数，但其中缺了一个。请编写代码找出那个缺失的整数。你有办法在O(n)时间内完成吗？
+//https://leetcode-cn.com/problems/missing-number-lcci/submissions/
 int missingNumber(int* nums, int numsSize){
     int ret1=0,ret2=0;
     int i=0;
@@ -30,7 +32,7 @@ int missingNumber_2(int* nums, int numsSize){
     return ret;
 }
 
-////python解法
+////python解法//
 //class Solution(object):
 //def missingNumber(self, nums):
 //    """
