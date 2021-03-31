@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Application/Clion_works/SeqList/SeqList.c
+SeqList.h
+D:/Application/Clion_works/SeqList/SeqList.h
+
+D:/Application/Clion_works/SeqList/SeqList.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+errno.h
+-
+assert.h
+-
+
