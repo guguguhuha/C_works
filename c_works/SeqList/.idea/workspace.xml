@@ -52,6 +52,9 @@
       </method>
     </configuration>
   </component>
+  <component name="StructureViewFactory">
+    <option name="AUTOSCROLL_MODE" value="false" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -63,6 +66,7 @@
       <option name="presentableId" value="Default" />
       <updated>1617193791416</updated>
       <workItem from="1617193797282" duration="5728000" />
+      <workItem from="1617242207848" duration="2994000" />
     </task>
     <servers />
   </component>
