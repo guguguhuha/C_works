@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Application/Clion_works/SLT/SLTNode.c
+SLTNode.h
+D:/Application/Clion_works/SLT/SLTNode.h
+
+D:/Application/Clion_works/SLT/SLTNode.h
+stdio.h
+-
+stdlib.h
+-
+assert.h
+-
+
+D:/Application/Clion_works/SLT/main.c
+SLTNode.h
+D:/Application/Clion_works/SLT/SLTNode.h
+
