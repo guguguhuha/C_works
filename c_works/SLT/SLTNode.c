@@ -1,102 +1,311 @@
 #include "SLTNode.h"
-// å¼ºè°ƒï¼ï¼ï¼
-//è°ƒè¯•è¯·åŠ setbuf(stdout,NULL)!!!
+// Ç¿µ÷£¡£¡£¡
+//µ÷ÊÔÇë¼Ósetbuf(stdout,NULL)!!!
 
-//åˆ›å»ºä¸€ä¸ªæ–°èŠ‚ç‚¹
+//´´½¨Ò»¸öÐÂ½Úµã
 SLTNode *BuySLTNode(DataType Data)
 {
-    //åˆ›å»ºä¸€ä¸ªå¯ä½¿ç”¨çš„ç©ºé—´
+    //´´½¨Ò»¸ö¿ÉÊ¹ÓÃµÄ¿Õ¼ä
     SLTNode *Node = (SLTNode *) malloc(sizeof(SLTNode));
     Node->data = Data;
     Node->next = NULL;
     return Node;
 }
 
-//å•é“¾è¡¨æ‰“å°å‡½æ•°
+//µ¥Á´±í´òÓ¡º¯Êý
 void SLTNodePrint(SLTNode *const p)
 {
-    //åˆ›å»ºä¸€ä¸ªæŒ‡é’ˆæ¥è¡¨ç¤ºå½“å‰çš„ä½ç½®
+    //´´½¨Ò»¸öÖ¸ÕëÀ´±íÊ¾µ±Ç°µÄÎ»ÖÃ
     SLTNode *cur = p;
-    if (cur == NULL)//å¦‚æžœä¼ è¿›çš„å€¼ä¸ºNULLï¼Œè¯´æ˜Žæ˜¯ä¸ªç©ºé“¾è¡¨
+    if (cur == NULL)//Èç¹û´«½øµÄÖµÎªNULL£¬ËµÃ÷ÊÇ¸ö¿ÕÁ´±í
     {
-        printf("è¯¥é“¾è¡¨ä¸­å¹¶æ²¡æœ‰å€¼å¯ä¾›æ‰“å°ï¼\n");
+        printf("¸ÃÁ´±íÖÐ²¢Ã»ÓÐÖµ¿É¹©´òÓ¡£¡\n");
         return;
     }
-    //å¾ªçŽ¯æ‰“å° dataï¼Œä¸æ–­èµ‹å€¼è¦†ç›–
+    //Ñ­»·´òÓ¡ data£¬²»¶Ï¸³Öµ¸²¸Ç
     while (cur != NULL)
     {
         printf("%d -> ", cur->data);
-        cur = cur->next;//å½“å‰æŒ‡é’ˆæŒ‡å‘ä¸‹ä¸€ä½
+        cur = cur->next;//µ±Ç°Ö¸ÕëÖ¸ÏòÏÂÒ»Î»
     }
     printf("NULL\n");
 }
 
-//å•é“¾è¡¨å°¾æ’å‡½æ•°
+//µ¥Á´±íÎ²²åº¯Êý
 void SLTNodePushBack(SLTNode **pp, DataType InsertData)
 {
     SLTNode *NewNode = BuySLTNode(InsertData);
-    if (*pp == NULL)//å°±è¯´æ˜Žè¯¥é“¾è¡¨å¹¶æ— å€¼
+    if (*pp == NULL)//¾ÍËµÃ÷¸ÃÁ´±í²¢ÎÞÖµ
     {
         *pp = NewNode;
     }
     else
     {
-        //éžç©ºå°±æ‰¾å°¾
+        //·Ç¿Õ¾ÍÕÒÎ²
         SLTNode *cur = *pp;
-        while (cur->next != NULL)//æ‰¾å°¾
+        while (cur->next != NULL)//ÕÒÎ²
         {
             cur = cur->next;
         }
-        //å°†nextæŒ‡å‘æ–°å»ºçš„èŠ‚ç‚¹
+        //½«nextÖ¸ÏòÐÂ½¨µÄ½Úµã
         cur->next = NewNode;
     }
 }
 
-//å•é“¾è¡¨å¤´æ’å‡½æ•°
+//µ¥Á´±íÍ·²åº¯Êý
 void SLTNodePushFront(SLTNode **p, DataType InsertData)
 {
-    //æ–°å»ºä¸€ä¸ªèŠ‚ç‚¹
+    //ÐÂ½¨Ò»¸ö½Úµã
     SLTNode *NewNode = BuySLTNode(InsertData);
-    //æ–°å»ºçš„èŠ‚ç‚¹æŒ‡å‘å¤´èŠ‚ç‚¹
+    //ÐÂ½¨µÄ½ÚµãÖ¸ÏòÍ·½Úµã
     NewNode->next = *p;
-    //å°†å¤´èŠ‚ç‚¹é‡æ–°èµ‹å€¼
+    //½«Í·½ÚµãÖØÐÂ¸³Öµ
     *p = NewNode;
 }
 
-//å•é“¾è¡¨å°¾åˆ å‡½æ•°
+//µ¥Á´±íÎ²É¾º¯Êý
 void SLTNodePopBack(SLTNode **pp)
 {
-    //æŒ‡å‘å½“å‰èŠ‚ç‚¹
+    //Ö¸Ïòµ±Ç°½Úµã
     SLTNode *cur = *pp;
-    //æŒ‡å‘ä¸Šä¸€ä¸ªèŠ‚ç‚¹
+    //Ö¸ÏòÉÏÒ»¸ö½Úµã
     SLTNode *prev = NULL;
 
-    //å¦‚æžœæ²¡æœ‰èŠ‚ç‚¹
+    //Èç¹ûÃ»ÓÐ½Úµã
     if (cur == NULL)
     {
-        printf("è¯¥å•é“¾è¡¨ä»¥æ— å€¼å¯åˆ é™¤ï¼\n");
-        //ç›´æŽ¥é€€å‡º
+        printf("¸Ãµ¥Á´±íÒÔÎÞÖµ¿ÉÉ¾³ý£¡\n");
+        //Ö±½ÓÍË³ö
         return;
     }
-        //å¦‚æžœä¸‹ä¸€ä¸ªèŠ‚ç‚¹ä¸ºNULL---ä¹Ÿå°±æ˜¯åªæœ‰ä¸€ä¸ªèŠ‚ç‚¹
+        //Èç¹ûÏÂÒ»¸ö½ÚµãÎªNULL---Ò²¾ÍÊÇÖ»ÓÐÒ»¸ö½Úµã
     else if (cur->next == NULL)
     {
         free(cur);
         cur = NULL;
-        //ç½®NULL ï¼šè¯¥èŠ‚ç‚¹åˆ é™¤ä¹‹åŽï¼Œå†æ— èŠ‚ç‚¹ï¼Œæ‰€ä»¥ç½®NULL
-        //*pp = NULL;
+        //ÖÃNULL £º¸Ã½ÚµãÉ¾³ýÖ®ºó£¬ÔÙÎÞ½Úµã£¬ËùÒÔÖÃNULL
+        *pp = NULL;
     }
     else
     {
-        //éåŽ†æ‰¾æœ€åŽä¸€ä¸ªèŠ‚ç‚¹
+        //±éÀúÕÒ×îºóÒ»¸ö½Úµã
         while (cur->next != NULL)
         {
             prev = cur;
             cur = cur->next;
         }
-        free(cur);//é‡Šæ”¾ç©ºé—´
-        cur = NULL;//ç½®NULL
-        //åˆ é™¤ä¹‹åŽä¸Šä¸€ä¸ªèŠ‚ç‚¹å˜ä¸ºäº†æœ€åŽä¸€ä¸ªèŠ‚ç‚¹ï¼Œå®ƒä¹‹åŽçš„èŠ‚ç‚¹ä¸ºNULL
+        free(cur);//ÊÍ·Å¿Õ¼ä
+        cur = NULL;//ÖÃNULL
+        //É¾³ýÖ®ºóÉÏÒ»¸ö½Úµã±äÎªÁË×îºóÒ»¸ö½Úµã£¬ËüÖ®ºóµÄ½ÚµãÎªNULL
         prev->next = NULL;
     }
 }
+
+// µ¥Á´±í²éÕÒ
+SLTNode *SLTFind(SLTNode *p, DataType SearchData)
+{
+    assert(p);
+    SLTNode *cur = p;
+    while (cur)
+    {
+        if (cur->data == SearchData)
+        {
+            return cur;
+        }
+        else
+        {
+            cur = cur->next;
+        }
+    }
+    return NULL;
+}
+
+// µ¥Á´±íÔÚposÎ»ÖÃÖ®ºó²åÈëx
+void SLTInsertAfter(SLTNode *pos, DataType InsertData)
+{
+    assert(pos);
+    SLTNode *newnode = BuySLTNode(InsertData);
+    //ÐÂ½Úµã½ÓÊÕposÎ»ÖÃµÄÏÂÒ»¸öÎ»ÖÃ
+    newnode->next = pos->next;
+    //½«posÎ»µÄÏÂÒ»¸öÉèÖÃÎª ÐÂ½Úµã£¬
+    //¶øÐÂ½ÚµãµÄÏÂÒ»¸öÖ¸ÏòÓÖÖ¸ÏòÔ­±¾Î»ÖÃµÄºóÒ»¸ö
+    //ÕâÑù¾ÍÊµÏÖÁË²åÈë
+    pos->next = newnode;
+}
+
+// µ¥Á´±íÔÚposÎ»ÖÃÖ®Ç°²åÈëx
+void SLTInsertBefore(SLTNode *pos, DataType InsertData)
+{
+    assert(pos);
+
+//    SLTNode *newnode = BuySLTNode(InsertData);
+//    //ÐÂ½Úµã½ÓÊÕposÎ»ÖÃµÄÏÂÒ»¸öÎ»ÖÃ
+//    newnode->next = pos->next;
+//    //½«posÎ»µÄÏÂÒ»¸öÉèÖÃÎª ÐÂ½Úµã£¬
+//    //¶øÐÂ½ÚµãµÄÏÂÒ»¸öÖ¸ÏòÓÖÖ¸ÏòÔ­±¾Î»ÖÃµÄºóÒ»¸ö
+//    //ÕâÑù¾ÍÊµÏÖÁË²åÈë
+//    pos->next = newnode;
+
+
+    //ÎÒÃÇ²ÉÓÃºó²åµÄ·½Ê½£¬ÔÚÀ´½»»»Á½±äÁ¿µÄÖµ
+    SLTInsertAfter(pos, InsertData);
+
+    SLTNode *nextnode = pos->next;
+
+    //½»»»Öµ
+    DataType temp = pos->data;
+    pos->data = nextnode->data;
+    nextnode->data = temp;
+
+    //Èç¹ûÕâÑùÐ´£¬ÏÂÒ»´ÎÈç¹û»¹ÊÇÕâ¸öÎ»ÖÃ²åÈë
+    //ÄÇ¾ÍÐèÒªÔÙÒ»´ÎÑ°ÕÒposµÄÎ»ÖÃ
+    //ÒòÎªÔÚÕâ¸öº¯ÊýÀï£¬ÎÒÃÇÖ»ÊÇ¸Ä±äÁË»¥ÏàµÄÖµ
+}
+
+// µ¥Á´±íÔÚposÎ»ÖÃÖ®Ç°²åÈëx
+void SLTInsertBefore_2(SLTNode **p, SLTNode *pos, DataType InsertData)
+{
+    assert(pos);
+    SLTNode *newnode = BuySLTNode(InsertData);
+    //Èç¹ûÊÇÍ·²å
+    if (*p == pos)
+    {
+        newnode->next = pos;
+        *p = newnode;
+    }
+    else
+    {
+        SLTNode *cur = *p;
+        SLTNode *prev = NULL;
+
+        //ÐÂ½ÚµãÖ¸ÏòÔ­½Úµã
+        newnode->next = pos;
+
+        //±éÀúÕÒµ½Ëù²åÎ»ÖÃµÄÇ°Ò»¸öÎ»ÖÃ
+        while (cur != pos)
+        {
+            prev = cur;
+            cur = cur->next;
+        }
+
+        //ÉÏÒ»¸ö½ÚµãÖ¸ÏòÐÂ½Úµã
+        prev->next = newnode;
+
+    }
+}
+
+//É¾³ýposÎ»ºóµÄÊý¾Ý
+void SLTEraseAfter(SLTNode *pos)
+{
+    assert(pos);
+    if (pos->next == NULL)
+    {
+        //ËµÃ÷ºóÃæ²¢Ã»ÓÐÔªËØÁË
+        return;
+    }
+    else
+    {
+        //´´½¨Ò»¸öÖ¸ÕëÖ¸ÏòÏÂÒ»¸öÎ»ÖÃ
+        SLTNode *next = pos->next;
+        //Ô­Î»ÖÃµÄÏÂÒ»¸öÎ»ÖÃ£¬Ö¸Ïò ÏÂÒ»¸öÎ»ÖÃ µÄÏÂÒ»¸öÎ»ÖÃ
+        pos->next = next->next;
+        //ÊÍ·ÅÄÚ´æ
+        free(next);
+        next = NULL;
+    }
+}
+
+//É¾³ýposÎ»µÄÊý¾Ý --- º¬ÓÐÍ·É¾
+void SLTEraseCur(SLTNode **p, SLTNode *pos)
+{
+    assert(pos);
+    if (*p == pos)
+    {
+        //ËµÃ÷ÊÇÍ·É¾
+        *p = pos->next;
+        free(pos);
+        pos = NULL;
+    }
+    else
+    {
+        //ÆÕÍ¨Î»ÖÃ
+        SLTNode *prev = *p;
+        SLTNode *cur = *p;
+        //ÕÒµ½Í·Ò»¸öÎ»ÖÃ
+        while (cur != pos)
+        {
+            prev = cur;
+            cur = cur->next;
+        }
+        //Í·Ò»¸öÎ»ÖÃÖ¸ÏòÏÂÏÂ¸öÎ»ÖÃ
+        prev->next = pos->next;
+        free(pos);
+        pos = NULL;
+    }
+
+}
+
+//ÐÞ¸ÄposÎ»µÄÊý¾Ý
+void SLTModify(SLTNode *pos, DataType ModifyData)
+{
+    assert(pos);
+    pos->data = ModifyData;
+}
+
+void SLT_Modify(SLTNode **pos, DataType ModifyData)
+{
+    assert(pos);
+    (*pos)->data = ModifyData;
+}
+
+//Í·É¾
+void SLTNodePopFront(SLTNode **p)
+{
+    if (*p == NULL)
+    {
+        //Èç¹ûÊÇ¿Õ±í
+        printf("¸ÃÁ´±íÖÐÎÞÖµ¿É¹©É¾³ý£¡\n");
+        return;
+    }
+    else
+    {
+        SLTNode *next = *p;
+        //Ö¸ÏòÏÂÒ»¸öÎ»ÖÃ
+        *p = (*p)->next;
+        //ÊÍ·Å½Úµã
+        free(next);
+        next = NULL;//¼°Ê±ÖÃNULL
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
