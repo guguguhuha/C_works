@@ -1,0 +1,144 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+
+//程序根据键盘上所输入的平面上两个点的坐标，计算两点之间的距离。
+#include <stdio.h>
+#include <math.h>//1
+#include <stdlib.h>
+struct point//表示平面上一个点的结构体 //2
+{
+	double x;//平面上任意点的x坐标值 
+	double y;//平面上任意点的y坐标值 
+};
+double dis(struct point a, struct point b)//计算两点间的距离 
+{
+	return sqrt((a.x - b.x)*(a.x - b.x) + (a.y - b.y)*(a.y - b.y));
+}
+int main()
+{
+	struct point sa, sb;
+	printf("输入第1个点的坐标值\n");
+	scanf("%lf%lf",&sa.x,&sa.y );//输入sa点的x和y坐标 //3
+	printf("第1个点的坐标值是：x:%lf,y:%lf\n", sa.x, sa.y);
+	printf("输入第2个点的坐标值\n");
+	scanf("%lf%lf", &sb.x, &sb.y);//输入sb点的x和y坐标 //4
+	printf("第2个点的坐标值是：x:%lf,y:%lf\n", sb.x, sb.y);
+	system("cls");
+	printf("\n\n\tA点(%lf,%lf)   B点(%lf,%lf)   其距离为：%lf\n", sa.x, sa.y, sb.x, sb.y, dis(sa,sb)); //5
+	getchar();
+	return 1;
+}
+
+
+
+#define _CRT_SECURE_NO_WARNINGS 1
+
+//程序实现在原有的小吃榜单上添加新的小吃，添加完成后输出更新后的小吃榜单。
+#include <stdio.h>
+#include <time.h>
+#include<windows.h>
+
+
+struct xiaochi
+{
+	int num;//小吃的编号 
+	char name[20];//小吃的名称 
+	char pname[20];//小吃的类型（面食、米食、果类) 
+	char jianjie[100];//小吃的特色、味道、 评价 
+};
+int tianjia(struct xiaochi *ps)//小吃新品添加 
+{
+
+	char ch;
+	static pnum = 1;
+	pnum++; ps->num = pnum;//1
+	gets(ps->name); gets(ps->pname); gets(ps->jianjie);//从键盘读取小吃的名称、类型、简介 //2
+	fflush(stdin);
+	printf("是否继续输入小吃？格式：名称  产地  简介\n");
+	ch = getchar(); fflush(stdin);//3
+	if (ch == 'y' || ch == 'Y') return 1;//继续追加则回复y 
+	else return 0;
+
+}
+int main()
+{
+	int p = 1, cp = 1, i;
+	struct xiaochi str[100] = { 1,"油条","上海","是一种古老的中式面食，长条形中空的油炸食品，口感松脆有韧劲，中国传统的早点之一。" };
+	struct xiaochi *pstr1;
+	pstr1 = str;
+	printf("\t========================小吃英雄榜==========================\n");
+	printf("%4d,%s,%s,%s\n", pstr1->num, pstr1->name, pstr1->pname, pstr1->jianjie);
+	printf("\n\n可以添加你熟悉的小吃 格式：名称  产地  简介\n");
+	do {
+		pstr1++; p = tianjia(pstr1); cp++;//4
+
+	} while (p);//5
+	system("cls");
+	printf("\t========================小吃英雄榜==========================\n");
+	for (pstr1 = str, i = 1; i <= cp; i++, pstr1++)//输出添加新品后的小吃榜单 
+		printf("%4d,%s,%s,%s\n", pstr1->num, pstr1->name, pstr1->pname, pstr1->jianjie);
+}
+
+
+
+
+
+背景：
+    找出一个序列中最大、最小值，并且将该值对应的位置找到在信息处理中应用很广，比如在采集的信号中找到幅度最高的值，当该值超过阈值、并且所处的时间段在特定时间时报警；在图像中找最大、最小值表示找到图像最亮、最暗的地方，根据二者之间差异对图像进行动态范围扩展，提高图像明暗对比度等。
+需求描述：
+    编写程序，首先生成数值动态范围0-1、共100个数据的随机序列X，然后分别找到X中的最大值、最小值，并打印出该值以及该值对应的数组下标。
+
+
+#define _CRT_SECURE_NO_WARNINGS 1
+//背景：
+//找出一个序列中最大、最小值，并且将该值对应的位置找到在信息处理中应用很广，
+//比如在采集的信号中找到幅度最高的值，当该值超过阈值、并且所处的时间段在特定时间时报警
+//；在图像中找最大、最小值表示找到图像最亮、最暗的地方，根据二者之间差异对图像进行动态范围扩展，提高图像明暗对比度等。
+//需求描述：
+//编写程序，首先生成数值动态范围0 - 1、共100个数据的随机序列X，
+//然后分别找到X中的最大值、最小值，并打印出该值以及该值对应的数组下标。
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+
+int main()
+{
+	int i,a,b;
+	double num[100] = {0.0};
+	double min = 1.0, max = 0.0;
+	srand((unsigned)time(NULL));
+	for (i = 0; i < 100; i++)
+	{
+		num[i] = (rand() % 101) / 100.0;
+	}
+	for (i = 0; i < 100; i++)
+	{
+		printf("%lf\t%d\n",num[i],i);
+		if (num[i] > max)
+		{
+			max = num[i];
+			a = i;
+		}
+		if (num[i] < min)
+		{
+			min = num[i];
+			b = i;
+		}
+	}
+	printf("最大的数为%.2lf，它在数组中的下标为%d\n", max, a);
+	printf("最小的数为%.2lf，它在数组中的下标为%d\n", min, b);
+	return 0;
+}
+
+
+
+
+
+
+专题88：会员升级
+背景：
+ 上海外滩海琪园社区物业设置普通会员、金卡会员、VIP会员，普通会员无需交会费，同时在社区停车30分钟以上按50元/小时收费，快递寄存按件收费，每件2元/天；金卡会员需交会费899元/年，在社区停车30分钟以上按10元/小时收费，快递寄存免费；VIP会员会员需交会费3899元/年，在社区停车30分钟以上按1元/小时收费，快递寄存免费。
+需求描述：
+由键盘输入多位客户入住上海外滩海琪园社区日期、会员等级、手机号、车牌号，输入完毕后将数据存入数据文件（hx.txt），上海外滩海琪园社区物业规定普通会员住满100天可以选择升至金卡或不升级，金卡会员会籍满200天可以选择升至VIP或不升级， 每天需要访问数据文件（hx.txt）查找当天可以升级的客户，通知客户可以办理升级手续，如果客户回复需要升级，则修改数据文件（hx.txt），每次车辆进入则查询数据文件（hx.txt）根据会员等级计算停车费，并将停车费账单发给会员。
+请根据需求设计程序，满足实际需求。
+
