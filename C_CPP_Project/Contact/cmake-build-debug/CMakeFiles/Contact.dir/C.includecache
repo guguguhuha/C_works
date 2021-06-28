@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Application/Clion_works/Contact/Contact.c
+Contact.h
+D:/Application/Clion_works/Contact/Contact.h
+
+D:/Application/Clion_works/Contact/Contact.h
+stdio.h
+-
+string.h
+-
+errno.h
+-
+stdlib.h
+-
+assert.h
+-
+

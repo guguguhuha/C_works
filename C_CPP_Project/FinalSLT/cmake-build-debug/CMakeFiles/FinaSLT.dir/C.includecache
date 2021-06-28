@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Application/Clion_works/FinalSLT/SLT.c
+SLT.h
+D:/Application/Clion_works/FinalSLT/SLT.h
+
+D:/Application/Clion_works/FinalSLT/SLT.h
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+errno.h
+-
+assert.h
+-
+
+D:/Application/Clion_works/FinalSLT/main.c
+SLT.h
+D:/Application/Clion_works/FinalSLT/SLT.h
+

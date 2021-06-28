@@ -1,0 +1,3 @@
+D:/Application/Clion_works/Contact/cmake-build-debug/CMakeFiles/Contact.dir
+D:/Application/Clion_works/Contact/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Application/Clion_works/Contact/cmake-build-debug/CMakeFiles/rebuild_cache.dir

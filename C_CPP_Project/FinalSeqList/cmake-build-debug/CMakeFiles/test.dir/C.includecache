@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Application/Clion_works/FinalSeqList/main.c
+test.h
+D:/Application/Clion_works/FinalSeqList/test.h
+
+D:/Application/Clion_works/FinalSeqList/test.c
+test.h
+D:/Application/Clion_works/FinalSeqList/test.h
+
+D:/Application/Clion_works/FinalSeqList/test.h
+stdio.h
+-
+stdlib.h
+-
+errno.h
+-
+string.h
+-
+assert.h
+-
+
